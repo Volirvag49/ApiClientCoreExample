@@ -7,7 +7,7 @@ using System.Linq;
 namespace ApiClientCoreExample.Tests.DLL
 {
     [TestClass]
-    public class TestEF
+    public class EFTest
     {
         DbContextOptionsBuilder<ApplicationDBContext> builder;
         ApplicationDBContext db = null;

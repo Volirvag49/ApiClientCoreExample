@@ -4,4 +4,12 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiClientCoreExample.DAL\ApiClientCoreExample.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
