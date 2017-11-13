@@ -1,21 +1,28 @@
-﻿<h2>Index</h2>
-<button>Загрузить</button>
+﻿
 <div id="result"></div>
+<button>Обновить</button>
 @section scripts
     {
     <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            updateContent();
+
+        });
         $(function () {
             $('button').click(function () {
-                $.ajax({
-                    url: '@Url.Action("CurrentStatsAsync")',
-                    type: 'GET',
-                    contentType: "application/json",
-                    success: function (data) {
-                        $('#result').html(data);
-                    }
-                });
+                updateContent();
             });
-        });       
-    </script>
+        });
 
+        function updateContent() {
+            $.ajax({
+                url: '@Url.Action("CurrentStatsAsync")',
+                type: 'GET',
+                contentType: "application/json",
+                success: function (data) {
+                    $('#result').html(data);
+                }
+            });
+        };
+    </script>
 }

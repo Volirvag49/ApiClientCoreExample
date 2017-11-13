@@ -25,8 +25,8 @@ namespace ApiClientCoreExample.WEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<ApplicationDBContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
@@ -36,9 +36,10 @@ namespace ApiClientCoreExample.WEB
 
             services.AddMvc();
 
+            services.AddAutoMapper();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddAutoMapper();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMinerService, MinerService>();
         }

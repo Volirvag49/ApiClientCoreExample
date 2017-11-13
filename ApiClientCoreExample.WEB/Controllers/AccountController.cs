@@ -36,7 +36,7 @@ namespace ApiClientCoreExample.WEB.Controllers
             {
                 try
                 {
-                    var loginStatus = await userService.Login(model.Login, model.Password);
+                    await userService.Login(model.Login, model.Password);
                     
                     await Authenticate(model.Login);
                     return RedirectToAction("Index", "Home");

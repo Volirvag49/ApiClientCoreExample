@@ -4,6 +4,7 @@ using ApiClientCoreExample.WEB.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace ApiClientCoreExample.WEB.Controllers
@@ -29,6 +30,12 @@ namespace ApiClientCoreExample.WEB.Controllers
         {
             var userName = HttpContext.User.Identity.Name;
             var userMiner = await userService.GetUsersMiner(userName);
+
+            DateTime now = DateTime.Now;
+
+
+            ViewBag.userMiner = userMiner;
+            ViewBag.currentTime =  now;
 
             CurrentStatsViewModel stats = null;
             var statsDTO = await minerService.GetCurrentStats(userMiner);

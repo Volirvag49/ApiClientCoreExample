@@ -7,7 +7,7 @@ namespace ApiClientCoreExample.BLL.Interfaces
     public interface IUserService : IDisposable
     {
         Task Register(UserDTO user);
-        Task<bool> Login(string login, string password);
+        Task Login(string login, string password);
         Task<string> GetUsersMiner(string userLogin);
     }
 }

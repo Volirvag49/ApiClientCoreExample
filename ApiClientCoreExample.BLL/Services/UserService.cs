@@ -42,16 +42,14 @@ namespace ApiClientCoreExample.BLL.Services
             }
         }
 
-        public async Task<bool> Login(string login, string password)
+        public async Task Login(string login, string password)
         {
             var userIsExist = await unitOfWork.Users.IsExistAsync(where: q => q.Login == login && q.Password == password);
 
-            if (userIsExist)
+            if (!userIsExist)
             {
-                return true;
+                throw new BusinessLogicException("Некорректный логин или пароль", "");
             }
-
-            return false;
         }
 
         public async Task<string> GetUsersMiner(string userLogin)

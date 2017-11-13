@@ -1,4 +1,5 @@
 ﻿using ApiClientCoreExample.BLL.DTO;
+using ApiClientCoreExample.BLL.Infrastructure;
 using ApiClientCoreExample.BLL.Services;
 using ApiClientCoreExample.DAL.EF;
 using ApiClientCoreExample.DAL.Entities;
@@ -67,10 +68,31 @@ namespace ApiClientCoreExample.Tests.BLL
                 string login = "111111";
                 string password = "111111";
                 string fakepassword = "Sfdfdf32";
+                bool loginIsCorrect = true;
+                bool loginIsNotCorrect = true;
 
                 // act
-                var loginIsCorrect = await userService.Login(login, password);
-                var loginIsNotCorrect = await userService.Login(login, fakepassword);
+                try
+                {
+                    await userService.Login(login, password);
+
+                }
+                catch (BusinessLogicException)
+                {
+                    loginIsCorrect = false;
+
+                }
+
+                try
+                {
+                    await userService.Login(login, fakepassword);
+
+                }
+                catch (BusinessLogicException)
+                {
+                    loginIsNotCorrect = false;
+
+                }
 
                 // assert
                 Assert.IsTrue(loginIsCorrect);
