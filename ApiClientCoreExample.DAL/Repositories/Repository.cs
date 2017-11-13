@@ -53,6 +53,11 @@ namespace ApiClientCoreExample.DAL.Repositories
             }
         }
 
+        public async Task<T> GetByAsync(Expression<Func<T, bool>> where = null)
+        {
+            return await dbSet.FirstOrDefaultAsync(where);
+        }
+
         public async Task<T> GetByIdAsyn(int? id)
         {
             return await dbSet.FindAsync(id);

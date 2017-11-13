@@ -22,12 +22,11 @@ namespace ApiClientCoreExample.BLL.Services
 
             if (userDTO == null)
             {
-                throw new ValidationException("Требуется пользователь", "");
+                throw new BusinessLogicException("Требуется пользователь", "");
             }
 
             await CheckLogin(userDTO);
 
-            Mapper.Initialize(cfg => cfg.CreateMap<UserDTO, User>());
             User user = Mapper.Map<UserDTO, User>(userDTO);
 
             unitOfWork.Users.Create(user);
@@ -39,7 +38,7 @@ namespace ApiClientCoreExample.BLL.Services
             var loginIsExist = await unitOfWork.Users.IsExistAsync(where: q => q.Login == userDTO.Login && q.Id != userDTO.Id);
             if (loginIsExist)
             {
-                throw new ValidationException("Логин должен быть уникальным", "Login");
+                throw new BusinessLogicException("Логин должен быть уникальным", "Login");
             }
         }
 
@@ -53,6 +52,13 @@ namespace ApiClientCoreExample.BLL.Services
             }
 
             return false;
+        }
+
+        public async Task<string> GetUsersMiner(string userLogin)
+        {
+            var usersMiner = await unitOfWork.Users.GetByAsync(where: u => u.Login== userLogin);
+
+            return usersMiner.Miner;
         }
 
         public void Dispose()

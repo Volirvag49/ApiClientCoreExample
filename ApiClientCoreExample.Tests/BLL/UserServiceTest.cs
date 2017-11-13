@@ -1,7 +1,9 @@
 ﻿using ApiClientCoreExample.BLL.DTO;
 using ApiClientCoreExample.BLL.Services;
 using ApiClientCoreExample.DAL.EF;
+using ApiClientCoreExample.DAL.Entities;
 using ApiClientCoreExample.DAL.Repositories;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
@@ -29,7 +31,8 @@ namespace ApiClientCoreExample.Tests.BLL
                 InitDB.InitDbContext(db);
                 unitOfWork = new UnitOfWork(db);
                 userService = new UserService(unitOfWork);
-            }         
+                Mapper.Initialize(cfg => cfg.CreateMap<User, UserDTO>());
+            }
 
             [TestMethod]
             public async Task UserService_Register()

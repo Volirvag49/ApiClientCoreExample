@@ -10,7 +10,7 @@ namespace ApiClientCoreExample.DAL.Repositories
     {
         private ApplicationDBContext dbContext;
 
-        private Repository<User> userRepository;
+        private IRepository<User> userRepository;
 
         public UnitOfWork(ApplicationDBContext context)
         {

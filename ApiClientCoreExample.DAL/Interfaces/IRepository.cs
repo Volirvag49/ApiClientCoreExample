@@ -14,6 +14,7 @@ namespace ApiClientCoreExample.DAL.Interfaces
         Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "");
+        Task<T> GetByAsync(Expression<Func<T, bool>> where = null);
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);

@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiClientCoreExample.BLL\ApiClientCoreExample.BLL.csproj" />
     <ProjectReference Include="..\ApiClientCoreExample.DAL\ApiClientCoreExample.DAL.csproj" />
+    <ProjectReference Include="..\ApiClientCoreExample.WEB\ApiClientCoreExample.WEB.csproj" />
   </ItemGroup>
 
 </Project>

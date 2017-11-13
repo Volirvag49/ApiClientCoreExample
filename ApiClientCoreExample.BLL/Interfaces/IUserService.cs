@@ -8,5 +8,6 @@ namespace ApiClientCoreExample.BLL.Interfaces
     {
         Task Register(UserDTO user);
         Task<bool> Login(string login, string password);
+        Task<string> GetUsersMiner(string userLogin);
     }
 }
