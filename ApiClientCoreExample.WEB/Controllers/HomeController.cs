@@ -1,4 +1,5 @@
 ﻿using ApiClientCoreExample.BLL.DTO;
+using ApiClientCoreExample.BLL.Infrastructure;
 using ApiClientCoreExample.BLL.Interfaces;
 using ApiClientCoreExample.WEB.Models;
 using AutoMapper;
@@ -26,23 +27,36 @@ namespace ApiClientCoreExample.WEB.Controllers
             return View();
         }
 
-        public async Task<PartialViewResult> CurrentStatsAsync()
+        public async Task<IActionResult> CurrentStatsAsync()
         {
             var userName = HttpContext.User.Identity.Name;
             var userMiner = await userService.GetUsersMiner(userName);
 
             DateTime now = DateTime.Now;
+            DataDTO dataDTO;
 
 
             ViewBag.userMiner = userMiner;
             ViewBag.currentTime =  now;
 
             CurrentStatsViewModel stats = null;
-            var statsDTO = await minerService.GetCurrentStats(userMiner);
+            try
+            {
+                dataDTO = await minerService.GetCurrentStats(userMiner);
+            }
+            catch (BusinessLogicException ex)
+            {
+                return RedirectToAction("Error", new {message = ex.Message});
+            }
 
-            stats = Mapper.Map<DataDTO, CurrentStatsViewModel>(statsDTO);
+            stats = Mapper.Map<DataDTO, CurrentStatsViewModel>(dataDTO);
 
             return PartialView(stats);
-        }    
+        }
+
+        public string Error(string message)
+        {
+            return $"<h3 class='text-danger'>api.ethermine.org error: {message}</h3>";
+        }
     }
 }

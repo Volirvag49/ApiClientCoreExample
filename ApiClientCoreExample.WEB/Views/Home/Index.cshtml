@@ -1,28 +1,28 @@
-﻿
-<div id="result"></div>
-<button>Обновить</button>
-@section scripts
-    {
-    <script language="javascript" type="text/javascript">
+﻿<div id="result"></div>
+    @section scripts
+        {
+        <script language="javascript" type="text/javascript">
         $(document).ready(function () {
+            $(document).on("click", "#updateButton", updateContent);
             updateContent();
-
         });
-        $(function () {
-            $('button').click(function () {
-                updateContent();
-            });
-        });
-
         function updateContent() {
             $.ajax({
+                beforeSend: function () {
+                    $("#result").hide();  
+                    $("#loader").show();  
+                },
                 url: '@Url.Action("CurrentStatsAsync")',
                 type: 'GET',
                 contentType: "application/json",
                 success: function (data) {
                     $('#result').html(data);
+                },
+                complete: function () {
+                    $('#loader').hide();
+                    $("#result").show(); 
                 }
             });
         };
-    </script>
-}
+        </script>
+    }

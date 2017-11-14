@@ -1,4 +1,5 @@
 ﻿using ApiClientCoreExample.BLL.DTO;
+using ApiClientCoreExample.BLL.Infrastructure;
 using ApiClientCoreExample.BLL.Interfaces;
 using Newtonsoft.Json;
 using System;
@@ -16,6 +17,8 @@ namespace ApiClientCoreExample.BLL.Services
         {
 
             DataDTO data = null;
+            StatsDTO currentStats = null;
+
             using (var client = new HttpClient())
             {
                 //Passing service base url  
@@ -39,12 +42,15 @@ namespace ApiClientCoreExample.BLL.Services
                     //Storing the response details recieved from web api   
                     var Response = Res.Content.ReadAsStringAsync().Result;
                     string info = Response;
-                    StatsDTO currentStats = JsonConvert.DeserializeObject<StatsDTO>(info, settings);
-
-                    data = currentStats.Data;
+                    currentStats = JsonConvert.DeserializeObject<StatsDTO>(info, settings);
                 }
-            }
+                if (currentStats.Status.ToLower() == "error")
+                {
+                    throw new BusinessLogicException(currentStats.Error, "");
+                }
 
+                data = currentStats.Data;
+            }
             return data;
         }
 

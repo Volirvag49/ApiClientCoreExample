@@ -9,7 +9,7 @@
             <hr />
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(m => m.Login, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Login, new { @class = "col-md-2 control-label", @value="111111"})
                 <div class="col-md-8">
                     @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
                 </div>
@@ -28,3 +28,13 @@
         }
     </div>
 </div>
+@section scripts
+{ 
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#Login").val("111111");
+        $("#Password").val("111111");
+    });
+</script>
+
+}
