@@ -1,94 +1,110 @@
 ﻿@model ApiClientCoreExample.WEB.Models.CurrentStatsViewModel
-<div >
+<div>
     <h2>Статистика</h2>
     <h4>Майнер: @ViewBag.userMiner</h4>
     <h4>Последняя проверка: @ViewBag.currentTime</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LastSeen)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LastSeen)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ReportedHashrate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ReportedHashrate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AverageHashrate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AverageHashrate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CurrentHashrate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CurrentHashrate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ValidShares)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ValidShares)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.InvalidShares)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.InvalidShares)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StaleShares)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StaleShares)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ActiveWorkers)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ActiveWorkers)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Unpaid)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Unpaid)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Unconfirmed)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Unconfirmed)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CoinsPerMin)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CoinsPerMin)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UsdPerMin)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UsdPerMin)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BtcPerMin)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BtcPerMin)
-        </dd>
-    </dl>
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastSeen)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LastSeen)
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReportedHashrate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ReportedHashrate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AverageHashrate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AverageHashrate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CurrentHashrate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CurrentHashrate)
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Unpaid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Unpaid)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Unconfirmed)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Unconfirmed)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ActiveWorkers)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ActiveWorkers)
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValidShares)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ValidShares)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvalidShares)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.InvalidShares)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StaleShares)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StaleShares)
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CoinsPerMin)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CoinsPerMin)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UsdPerMin)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UsdPerMin)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BtcPerMin)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BtcPerMin)
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
 <button id="updateButton">Обновить</button>
