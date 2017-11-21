@@ -20,7 +20,7 @@ namespace ApiClientCoreExample.Tests.BLL
         {
             // arrange
             DataDTO data = new DataDTO();
-            string miner = "7eb4dfab904c3d42c99a85114b6f0831bf8b318a";
+            string miner = "e6b821fb8bc6df40b922a82bdf78925bcff29d67";
             // act
             data = await minerService.GetCurrentStats(miner);
 

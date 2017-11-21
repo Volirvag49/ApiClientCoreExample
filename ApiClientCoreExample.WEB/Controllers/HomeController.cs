@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ApiClientCoreExample.WEB.Controllers
@@ -54,9 +55,9 @@ namespace ApiClientCoreExample.WEB.Controllers
             return PartialView(stats);
         }
 
-        public string Error(string message)
+        public IActionResult Error()
         {
-            return $"<h3 class='text-danger'>api.ethermine.org error: {message}</h3>";
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

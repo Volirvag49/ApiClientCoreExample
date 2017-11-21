@@ -42,7 +42,8 @@ namespace ApiClientCoreExample.BLL.Services
                     //Storing the response details recieved from web api   
                     var Response = Res.Content.ReadAsStringAsync().Result;
                     string info = Response;
-                    currentStats = JsonConvert.DeserializeObject<StatsDTO>(info, settings);
+                    var data2 = JsonConvert.DeserializeObject<StatsDTO>(info, settings);
+                    currentStats = data2;
                 }
                 if (currentStats.Status.ToLower() == "error")
                 {

@@ -18,7 +18,7 @@ namespace ApiClientCoreExample.DAL.EF
 
             var users = new User[]
             {
-                new User{Login = "111111", Password = "111111", Miner= "7eb4dfab904c3d42c99a85114b6f0831bf8b318a"}
+                new User{Login = "111111", Password = "111111", Miner= "e6b821fb8bc6df40b922a82bdf78925bcff29d67"}
             };
 
             foreach (User u in users)
